@@ -416,7 +416,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     expiration: Attribute.Date;
     creation_date: Attribute.Date & Attribute.DefaultTo<'2024-08-30'>;
     active: Attribute.Boolean & Attribute.DefaultTo<true>;
-    isFeature: Attribute.Boolean;
+    isFeature: Attribute.Boolean & Attribute.DefaultTo<false>;
     category: Attribute.Relation<
       'api::product.product',
       'oneToOne',

@@ -51,7 +51,8 @@
       "default": true
     },
     "isFeature": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     },
     "category": {
       "type": "relation",
