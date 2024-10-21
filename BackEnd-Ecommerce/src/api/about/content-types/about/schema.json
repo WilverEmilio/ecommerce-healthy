@@ -1,0 +1,55 @@
+{
+  "kind": "singleType",
+  "collectionName": "abouts",
+  "info": {
+    "singularName": "about",
+    "pluralName": "abouts",
+    "displayName": "About"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "text",
+      "required": true
+    },
+    "About_Us": {
+      "type": "text",
+      "required": true
+    },
+    "phrase": {
+      "type": "text",
+      "required": true
+    },
+    "What_We_Do_Description": {
+      "type": "text",
+      "required": true
+    },
+    "What_We_Do_OneTitle": {
+      "type": "text",
+      "required": true
+    },
+    "What_We_Do_OneDescription": {
+      "type": "text",
+      "required": true
+    },
+    "What_We_Do_TwoTitle": {
+      "type": "text",
+      "required": true
+    },
+    "What_We_Do_TwoDescription": {
+      "type": "text",
+      "required": true
+    },
+    "What_We_Do_ThreeTitle": {
+      "type": "text",
+      "required": true
+    },
+    "What_We_Do_ThreeDescription": {
+      "type": "text",
+      "required": true
+    }
+  }
+}
