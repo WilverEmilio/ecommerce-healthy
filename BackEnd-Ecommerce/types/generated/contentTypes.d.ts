@@ -794,6 +794,7 @@ export interface ApiAboutAbout extends Schema.SingleType {
     singularName: 'about';
     pluralName: 'abouts';
     displayName: 'About';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -809,6 +810,10 @@ export interface ApiAboutAbout extends Schema.SingleType {
     What_We_Do_TwoDescription: Attribute.Text & Attribute.Required;
     What_We_Do_ThreeTitle: Attribute.Text & Attribute.Required;
     What_We_Do_ThreeDescription: Attribute.Text & Attribute.Required;
+    About_Principal: Attribute.Media<'images'>;
+    About_Secundario: Attribute.Media<'images'>;
+    Question: Attribute.Media<'images'>;
+    image: Attribute.Media<'images'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -857,6 +862,62 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+  };
+}
+
+export interface ApiHomeHome extends Schema.SingleType {
+  collectionName: 'homes';
+  info: {
+    singularName: 'home';
+    pluralName: 'homes';
+    displayName: 'Home';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    phrase_one: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description_one: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    phrase_two: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description_two: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::home.home',
+      'oneToMany',
+      'api::home.home'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -958,6 +1019,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about.about': ApiAboutAbout;
       'api::category.category': ApiCategoryCategory;
+      'api::home.home': ApiHomeHome;
       'api::product.product': ApiProductProduct;
       'api::question.question': ApiQuestionQuestion;
     }
