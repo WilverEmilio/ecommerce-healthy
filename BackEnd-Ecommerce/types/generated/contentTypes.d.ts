@@ -865,46 +865,91 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
-export interface ApiHomeHome extends Schema.SingleType {
+export interface ApiChooseUsChooseUs extends Schema.SingleType {
+  collectionName: 'choose_uses';
+  info: {
+    singularName: 'choose-us';
+    pluralName: 'choose-uses';
+    displayName: 'Choose Us';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    description: Attribute.Text;
+    title_one: Attribute.String;
+    description_one: Attribute.Text;
+    title_two: Attribute.String;
+    description_two: Attribute.Text;
+    title_three: Attribute.String;
+    description_three: Attribute.Text;
+    image: Attribute.Media<'images'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::choose-us.choose-us',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::choose-us.choose-us',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiExperienceExperience extends Schema.CollectionType {
+  collectionName: 'experiences';
+  info: {
+    singularName: 'experience';
+    pluralName: 'experiences';
+    displayName: 'Experience';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    number: Attribute.Integer;
+    counterIcon: Attribute.String & Attribute.DefaultTo<'+'>;
+    Title: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::experience.experience',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::experience.experience',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHomeHome extends Schema.CollectionType {
   collectionName: 'homes';
   info: {
     singularName: 'home';
     pluralName: 'homes';
     displayName: 'Home';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
   attributes: {
-    phrase_one: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    description_one: Attribute.Text &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    phrase_two: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    description_two: Attribute.Text &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    phrase: Attribute.String;
+    info: Attribute.String;
+    description: Attribute.Text;
+    image: Attribute.Media<'images'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -912,12 +957,39 @@ export interface ApiHomeHome extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::home.home',
-      'oneToMany',
-      'api::home.home'
-    >;
-    locale: Attribute.String;
+  };
+}
+
+export interface ApiHomeStartHomeStart extends Schema.SingleType {
+  collectionName: 'home_starts';
+  info: {
+    singularName: 'home-start';
+    pluralName: 'home-starts';
+    displayName: 'Home_Start';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    icon: Attribute.Media<'images'>;
+    image_products: Attribute.Media<'images'>;
+    image_experence: Attribute.Media<'images'>;
+    fooder: Attribute.Media<'images'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-start.home-start',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-start.home-start',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -1019,7 +1091,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about.about': ApiAboutAbout;
       'api::category.category': ApiCategoryCategory;
+      'api::choose-us.choose-us': ApiChooseUsChooseUs;
+      'api::experience.experience': ApiExperienceExperience;
       'api::home.home': ApiHomeHome;
+      'api::home-start.home-start': ApiHomeStartHomeStart;
       'api::product.product': ApiProductProduct;
       'api::question.question': ApiQuestionQuestion;
     }

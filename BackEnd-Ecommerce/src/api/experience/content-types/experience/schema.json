@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "experiences",
+  "info": {
+    "singularName": "experience",
+    "pluralName": "experiences",
+    "displayName": "Experience"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "number": {
+      "type": "integer"
+    },
+    "counterIcon": {
+      "type": "string",
+      "default": "+"
+    },
+    "Title": {
+      "type": "string"
+    }
+  }
+}
