@@ -993,6 +993,33 @@ export interface ApiHomeStartHomeStart extends Schema.SingleType {
   };
 }
 
+export interface ApiInfoInfo extends Schema.SingleType {
+  collectionName: 'infos';
+  info: {
+    singularName: 'info';
+    pluralName: 'infos';
+    displayName: 'Info';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    email: Attribute.Email;
+    address: Attribute.String &
+      Attribute.DefaultTo<'Quetzaltenango, Quetzaltenango'>;
+    description: Attribute.Text;
+    phone: Attribute.BigInteger;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::info.info', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::info.info', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -1095,6 +1122,7 @@ declare module '@strapi/types' {
       'api::experience.experience': ApiExperienceExperience;
       'api::home.home': ApiHomeHome;
       'api::home-start.home-start': ApiHomeStartHomeStart;
+      'api::info.info': ApiInfoInfo;
       'api::product.product': ApiProductProduct;
       'api::question.question': ApiQuestionQuestion;
     }
